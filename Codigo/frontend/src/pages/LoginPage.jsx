@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import Header from '@/components/Header.jsx';
+import Footer from '@/components/Footer.jsx';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -15,77 +17,87 @@ export default function LoginPage() {
     setError('');
 
     try {
-      await signIn(email, senha);
-      navigate('/');
+      const loggedUser = await signIn(email, senha);
+      if (loggedUser?.role === 'teacher') {
+        navigate('/professor/dashboard');
+      } else {
+        navigate('/');
+      }
     } catch {
-      setError('Invalid email or password.');
+      setError('E-mail ou senha inválidos.');
     }
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F8F7FF] px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-[420px] overflow-hidden rounded-[32px] border-[6px] border-[#5B3DF5] bg-white shadow-2xl"
-      >
-        <div className="bg-[#5B3DF5] px-8 py-10 text-center text-white">
-          <h1 className="text-4xl font-black">Welcome Back!</h1>
-          <p className="mt-2 font-semibold text-white/80">
-            Ready for another adventure?
-          </p>
-        </div>
+    <div className="flex min-h-screen flex-col bg-[hsl(var(--background))]">
+      <Header />
 
-        <div className="space-y-5 px-8 py-8">
-          <div>
-            <label className="mb-2 block text-sm font-extrabold text-[#24145F]">
-              Email Address
-            </label>
-            <input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-14 w-full rounded-2xl border-4 border-gray-200 px-4 font-semibold outline-none focus:border-[#5B3DF5]"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="mb-2 block text-sm font-extrabold text-[#24145F]">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              className="h-14 w-full rounded-2xl border-4 border-gray-200 px-4 font-semibold outline-none focus:border-[#5B3DF5]"
-              required
-            />
-          </div>
-
-          {error && (
-            <p className="rounded-xl bg-red-50 px-4 py-3 text-sm font-bold text-red-500">
-              {error}
+      <main className="flex flex-1 items-center justify-center px-4 py-12">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-[420px] overflow-hidden rounded-[32px] border-[6px] border-[hsl(var(--secondary))] bg-white shadow-2xl"
+        >
+          <div className="bg-[hsl(var(--secondary))] px-8 py-10 text-center text-white">
+            <h1 className="text-4xl font-black">Bem-vindo!</h1>
+            <p className="mt-2 font-semibold text-white/80">
+              Pronto para mais uma aventura?
             </p>
-          )}
+          </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="h-16 w-full rounded-full bg-[#FF4F8B] text-xl font-black text-white shadow-[0_7px_0_#C92E63] transition hover:translate-y-1 hover:shadow-[0_3px_0_#C92E63] disabled:opacity-70"
-          >
-            {loading ? 'Logging in...' : 'Log In!'}
-          </button>
+          <div className="space-y-5 px-8 py-8">
+            <div>
+              <label className="mb-2 block text-sm font-extrabold text-[hsl(var(--secondary))]">
+                E-mail
+              </label>
+              <input
+                type="email"
+                placeholder="seu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-14 w-full rounded-2xl border-4 border-gray-200 px-4 font-semibold text-[hsl(var(--foreground))] outline-none transition focus:border-[hsl(var(--secondary))]"
+                required
+              />
+            </div>
 
-          <p className="text-center text-sm font-semibold text-gray-500">
-            Don't have an account?{' '}
-            <Link to="/signup" className="font-black text-[#FF4F8B] underline">
-              Sign up free
-            </Link>
-          </p>
-        </div>
-      </form>
+            <div>
+              <label className="mb-2 block text-sm font-extrabold text-[hsl(var(--secondary))]">
+                Senha
+              </label>
+              <input
+                type="password"
+                placeholder="••••••••"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                className="h-14 w-full rounded-2xl border-4 border-gray-200 px-4 font-semibold text-[hsl(var(--foreground))] outline-none transition focus:border-[hsl(var(--secondary))]"
+                required
+              />
+            </div>
+
+            {error && (
+              <p className="rounded-xl bg-red-50 px-4 py-3 text-sm font-bold text-red-600">
+                {error}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="h-16 w-full rounded-full bg-[hsl(var(--primary))] text-xl font-black text-white shadow-[0_7px_0_hsl(var(--primary-dark))] transition hover:translate-y-1 hover:shadow-[0_3px_0_hsl(var(--primary-dark))] disabled:opacity-70"
+            >
+              {loading ? 'Entrando...' : 'Entrar!'}
+            </button>
+
+            <p className="text-center text-sm font-semibold text-gray-500">
+              Não tem uma conta?{' '}
+              <Link to="/signup" className="font-black text-[hsl(var(--primary))] underline">
+                Cadastre-se
+              </Link>
+            </p>
+          </div>
+        </form>
+      </main>
+
+      <Footer />
     </div>
   );
 }

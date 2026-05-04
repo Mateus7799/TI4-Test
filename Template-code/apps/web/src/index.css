@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Outfit", sans-serif;
+  overflow-x: clip;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    /* Backgrounds: Light Cream/Gray */
+    --background: 40 33% 98%;
+    --foreground: 223 40% 15%;
+    
+    /* Primary Red #ae211f */
+    --primary: 359 70% 40%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary Blue #224292 */
+    --secondary: 223 62% 35%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Complementary Accents */
+    --accent: 45 93% 53%; /* Vibrant Yellow */
+    --accent-foreground: 223 40% 15%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --muted: 210 20% 90%;
+    --muted-foreground: 223 20% 40%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 223 40% 15%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 223 40% 15%;
+    
+    --border: 210 20% 85%;
+    --input: 210 20% 85%;
+    --ring: 359 70% 40%;
+    
+    --radius: 1.5rem;
+  }
+  
+  .dark {
+    --background: 223 40% 10%;
+    --foreground: 40 33% 98%;
+    --primary: 359 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 223 62% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 45 93% 53%;
+    --accent-foreground: 223 40% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --muted: 223 30% 20%;
+    --muted-foreground: 210 20% 70%;
+    --card: 223 40% 15%;
+    --card-foreground: 40 33% 98%;
+    --popover: 223 40% 15%;
+    --popover-foreground: 40 33% 98%;
+    --border: 223 30% 25%;
+    --input: 223 30% 25%;
+    --ring: 359 70% 50%;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .youth-gradient {
+    background: linear-gradient(135deg, hsl(359, 70%, 40%) 0%, hsl(223, 62%, 35%) 100%);
+  }
+  .playful-shadow {
+    box-shadow: 0 10px 25px -5px rgba(174, 33, 31, 0.15), 0 8px 10px -6px rgba(34, 66, 146, 0.1);
+  }
+  .playful-border {
+    border: 4px solid hsl(223, 62%, 35%);
+  }
+}

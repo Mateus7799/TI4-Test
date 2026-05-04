@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext.jsx';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
-import { Users, BookOpen, ChartBar as BarChart2, LogOut } from 'lucide-react';
+import { Users, BookOpen, ChartBar as BarChart3, LogOut } from 'lucide-react';
 
-export default function ProfessorDashboard() {
+export default function ProfessorHomePage() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -58,7 +58,7 @@ export default function ProfessorDashboard() {
             disabled
           />
           <DashboardCard
-            icon={<BarChart2 className="h-10 w-10 text-[hsl(var(--accent-foreground))]" />}
+            icon={<BarChart3 className="h-10 w-10 text-[hsl(var(--accent-foreground))]" />}
             title="Desempenho"
             description="Acompanhe o progresso dos alunos."
             color="border-[hsl(var(--accent))]"

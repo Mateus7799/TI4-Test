@@ -8,7 +8,7 @@ import GerenciarTurmas from "./pages/Turmas/GerenciarTurmas";
 import GerenciarTurma from "./pages/Turmas/GerenciarTurma";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
-import ProfessorDashboard from "./pages/Professor/ProfessorDashboard";
+import ProfessorHomePage from "./pages/Professor/ProfessorHomePage";
 
 export default function App() {
   return (
@@ -26,7 +26,7 @@ export default function App() {
           <Route path="/signup" element={<SignupPage />} />
 
           {/* PROFESSOR */}
-          <Route path="/professor/dashboard" element={<ProfessorDashboard />} />
+          <Route path="/professor/dashboard" element={<ProfessorHomePage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

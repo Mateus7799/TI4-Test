@@ -15,7 +15,7 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
 
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to={user?.role === 'teacher' ? '/' : '/'} className="flex items-center gap-3 group">
             <motion.div
               whileHover={{ rotate: 15, scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 400 }}
@@ -30,7 +30,7 @@ export default function Header() {
 
           <nav className="hidden md:flex items-center gap-2">
             <Link
-              to="/"
+              to={user?.role === 'teacher' ? '/' : '/'}
               className={`rounded-2xl px-5 py-2.5 text-base font-bold transition-all hover:-translate-y-0.5 ${
                 pathname === '/'
                   ? 'bg-secondary text-white shadow-md'

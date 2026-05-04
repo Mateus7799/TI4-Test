@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Gamepad2, BookOpen, ArrowRight,
@@ -9,6 +9,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { useAuth } from '@/contexts/AuthContext.jsx';
 
 /* ─── Animation variants ──────────────────────────────────────── */
 const fadeUp = {
@@ -92,6 +93,15 @@ const STATS = [
 
 /* ─── Component ───────────────────────────────────────────────── */
 export default function HomePage() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user?.role === 'teacher') {
+      navigate('/');
+    }
+  }, [user, navigate]);
+
   return (
     <div className="min-h-screen bg-background font-outfit">
       <Header />

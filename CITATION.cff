@@ -1,0 +1,34 @@
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: NextStep English
+authors:
+ - family-names: Barbosa de Oliveira
+    given-names: Davi Vinicius 
+  - family-names: Moreira da Silva
+    given-names: Diogo Henrique 
+  - family-names: Moreira da Silva
+    given-names: Gustavo Ignacio 
+  - family-names: Dolabela
+    given-names: Lucas Gonçalves
+  - family-names: Araújo
+    given-names: Mateus Azevedo
+  - family-names: Palhares
+    given-names: Vinicius Zegarra
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Lopes Ruas Nhimi
+    given-names: Filipe Torio
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Vilela Cardoso
+    given-names: Lernardo
+keywords:
+  - educação
+  - ensino de inglês
+  - plataforma educacional
+  - tecnologia educacional
+  - aprendizado digital
+repository-code: 
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2022-07-14
